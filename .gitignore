@@ -1,0 +1,7 @@
+.batou-lock
+.batou
+.vagrant
+work
+Berksfile.lock
+*.sublime-project
+/.cache
