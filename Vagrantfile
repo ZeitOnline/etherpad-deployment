@@ -31,8 +31,21 @@ Vagrant.configure("2") do |config|
       chef.add_recipe "recipe[zeit-batou-target]"
       chef.add_recipe "recipe[zeit-batou-target::nginx]"
       chef.add_recipe "recipe[nodejs]"
+      chef.add_recipe "recipe[zeit-sso::postgresql-server]"
 
       chef.json = {
+        "postgresql" => {
+          "enable_pgdg_apt" => true,
+          "version" => "9.6",
+          "password" => {
+            "postgres" => "postgres",
+          },
+          "database" => {
+            "name" => "etherpad",
+            "user" => "etherpad",
+            "password" => "etherpad",
+          }
+        },
         "nginx" => {
           "default_site_enabled" => false,
         },

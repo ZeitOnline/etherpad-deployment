@@ -10,6 +10,11 @@ class Etherpad(Component):
 
     port = 9001
 
+    db_host = 'localhost'
+    db_user = 'etherpad'
+    db_pass = 'etherpad'
+    db_name = 'etherpad'
+
     def configure(self):
         self += Download(
             'https://github.com/ether/etherpad-lite/archive/1.6.1.tar.gz',

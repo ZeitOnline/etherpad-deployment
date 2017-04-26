@@ -15,11 +15,15 @@
 
   //The Type of the database. You can choose between dirty, postgres, sqlite and mysql
   //You shouldn't use "dirty" for for anything else than testing or development
-  "dbType" : "dirty",
-  //the database specific settings
+  "dbType" : "postgres",
   "dbSettings" : {
-                   "filename" : "var/dirty.db"
-                 },
+    "host": "{{component.db_host}}",
+    "user": "{{component.db_user}}",
+    "password": "{{component.db_pass}}",
+    "database": "{{component.db_name}}",
+    "charset" : "utf8mb4"
+  },
+
   //the default text of a pad
   "defaultPadText" : "Welcome to Etherpad!\n\nThis pad text is synchronized as you type, so that everyone viewing this page sees the same text. This allows you to collaborate seamlessly on documents!\n\nGet involved with Etherpad at http:\/\/etherpad.org\n",
 

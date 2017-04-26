@@ -3,6 +3,7 @@
 # Zeit Online cookbooks
 STYX = "git@styx2.zeit.de:/home/git/chef.git"
 {
+  "zeit-sso" => "32b752e",  # 1.1.0
   "zeit-batou-target" => "a94506a",  # 0.1.11
 }.each do |name, commit|
   cookbook(
@@ -32,3 +33,16 @@ cookbook "nodejs", "=2.4.0"
     cookbook "windows", "=2.0.2"
     cookbook "seven_zip", "=2.0.2"
   cookbook "homebrew", "=1.7.2"
+
+cookbook "database", "=2.3.0"
+  cookbook "aws", "=2.5.0"
+  cookbook "postgresql", "=3.4.12"
+    # apt
+    # build-essential
+    cookbook "openssl", "=2.0.2"
+      cookbook "chef-sugar", "=3.1.1"
+  cookbook "mysql", "=5.6.1"
+    cookbook "yum-mysql-community", "=0.1.10"
+      cookbook "compat_resource", "=12.7.3"
+  cookbook "mysql-chef_gem", "=0.0.5"
+  cookbook "xfs", "=1.1.0"
