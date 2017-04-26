@@ -136,8 +136,12 @@
   // You can add as many appenders as you want here:
   "logconfig" :
     { "appenders": [
-        { "type": "console"
-        //, "category": "access"// only logs pad access
+        { "type": "console",
+          "category": "console"
+        },
+        { "type": "file",
+          "filename": "{{component.map('../supervisor/var/log')}}/access.log",
+          "category": "access"
         }
       ]
     }
