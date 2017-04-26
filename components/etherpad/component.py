@@ -1,6 +1,7 @@
 from batou.component import Component
 from batou.lib.archive import Extract
 from batou.lib.download import Download
+from batou.lib.file import File
 from batou.lib.supervisor import Program
 from batou.utils import Address
 
@@ -19,11 +20,15 @@ class Etherpad(Component):
         self.address = Address(self.host.fqdn, self.port)
         self.provide('etherpad:http', self.address)
 
+        self += File('settings.json')
+
         self += Program(
             'etherpad',
             options={'startsecs': 20},
             command='/usr/bin/node',
-            args=self.map('node_modules/ep_etherpad-lite/node/server.js')
+            args='%s --settings %s' % (
+                self.map('node_modules/ep_etherpad-lite/node/server.js'),
+                self.map('settings.json'))
         )
 
 
